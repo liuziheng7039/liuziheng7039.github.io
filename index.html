@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mari - AI 产品经理</title>
+  <title>刘镃衡的作品网页</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -36,7 +36,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ---- layout ---- */
     .container {
       max-width: 780px;
       margin: 0 auto;
@@ -72,11 +71,11 @@
       color: var(--text-secondary);
       font-weight: 400;
       line-height: 1.8;
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto;
     }
 
-    /* ---- about (性格特点) ---- */
+    /* ---- traits ---- */
     .about-traits {
       display: flex;
       flex-wrap: wrap;
@@ -96,7 +95,6 @@
       transition: transform 0.2s;
     }
     .trait:hover { transform: translateY(-1px); }
-    .trait .icon { font-size: 1rem; }
 
     /* ---- section titles ---- */
     .section-title {
@@ -138,7 +136,7 @@
     .project-card h3 {
       font-size: 1.05rem;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .project-card .desc {
       font-size: 0.92rem;
@@ -176,43 +174,53 @@
       font-weight: 400;
     }
 
-    /* ---- writing list ---- */
-    .writing-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    /* ---- writing 3-column ---- */
+    .writing-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
     }
-    .writing-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: padding-left 0.2s, background 0.2s;
-      border-radius: 6px;
-      padding-left: 4px;
-      padding-right: 4px;
-    }
-    .writing-item:last-child { border-bottom: none; }
-    .writing-item:hover {
-      padding-left: 12px;
-      background: rgba(45,90,39,0.03);
-    }
-    .writing-item .title {
+    .writing-col h3 {
       font-size: 0.95rem;
-      font-weight: 500;
-      flex: 1;
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-warm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .writing-item .meta {
-      font-size: 0.8rem;
+    .writing-col h3 .col-icon {
+      font-size: 1rem;
+    }
+    .writing-col ul {
+      list-style: none;
+    }
+    .writing-col li {
+      margin-bottom: 6px;
+    }
+    .writing-col li a {
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      line-height: 1.6;
+      display: block;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 0.2s, padding-left 0.2s;
+    }
+    .writing-col li a:hover {
+      background: rgba(45,90,39,0.04);
+      padding-left: 14px;
+    }
+    .writing-col li a .platform {
+      display: block;
+      font-size: 0.76rem;
       color: var(--text-muted);
-      flex-shrink: 0;
-      margin-left: 16px;
+      margin-top: 2px;
     }
 
-    /* ---- footer / contact ---- */
+    /* ---- footer ---- */
     .footer-section {
       text-align: center;
       padding-top: 32px;
@@ -221,36 +229,19 @@
     .contact-links {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 28px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
-    .contact-links a {
+    .contact-links a, .contact-links span {
       font-size: 0.9rem;
       color: var(--text-secondary);
       text-decoration: none;
       transition: color 0.2s;
     }
     .contact-links a:hover { color: var(--accent); }
-    .resume-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      background: var(--text-primary);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .resume-btn:hover {
-      background: #333;
-      transform: translateY(-1px);
-    }
     .copyright {
-      margin-top: 40px;
+      margin-top: 32px;
       font-size: 0.78rem;
       color: var(--text-muted);
     }
@@ -271,110 +262,135 @@
       .container { padding: 36px 16px 60px; }
       .hero h1 { font-size: 1.8rem; }
       .project-card { padding: 20px; }
-      .writing-item { flex-direction: column; gap: 4px; }
-      .writing-item .meta { margin-left: 0; }
+      .writing-columns {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- ====== 顶部：姓名 + 介绍 ====== -->
+    <!-- ====== 顶部 ====== -->
     <section class="hero">
-      <h1>你的名字</h1>
+      <h1>刘镃衡的作品网页</h1>
       <p class="tagline">
-        AI 产品经理 · 关注商业化策略与产品增长<br/>
-        985硕士 · 腾讯/百度实习经历
+        一个目标明确，方向唯一，保持好奇，不断补齐能力的人
       </p>
     </section>
 
-    <!-- ====== 性格特点 ====== -->
+    <!-- ====== 性格标签 ====== -->
     <section>
       <div class="about-traits">
-        <span class="trait"><span class="icon">🔍</span> 系统性思考者</span>
-        <span class="trait"><span class="icon">📐</span> 喜欢拆解商业逻辑</span>
-        <span class="trait"><span class="icon">🛠️</span> 想到就动手做</span>
-        <span class="trait"><span class="icon">🤔</span> 对因果关系有执念</span>
-        <!-- 按需增减，改文字即可 -->
+        <span class="trait">🛡️ 小学到高中一直在挨骂，永不破防</span>
+        <span class="trait">⚡ 说冻手就冻手！</span>
+        <span class="trait">🎮 CS战力全校第一也算优势</span>
       </div>
     </section>
 
-    <!-- ====== 中部：产品展示 ====== -->
+    <!-- ====== 产品展示 ====== -->
     <section>
       <h2 class="section-title"><span class="dot"></span>做过的东西</h2>
       <div class="project-grid">
 
         <div class="project-card">
-          <h3>项目名称一</h3>
-          <p class="desc">一句话描述这个项目解决了什么问题、做了什么事。</p>
+          <h3>校招网申自动填写 Agent</h3>
+          <p class="desc">解决了各公司网申字段名称不统一，简历自动解析无法全覆盖，手动填写耗时长的问题。</p>
           <div class="tags">
-            <span class="tag">标签1</span>
-            <span class="tag">标签2</span>
+            <span class="tag">Agent</span>
+            <span class="tag">C端产品</span>
           </div>
           <div class="links">
-            <a href="#" target="_blank">演示视频</a>
-            <a href="#" target="_blank">源码</a>
+            <a href="https://youtu.be/rtcOfrShD74" target="_blank">演示视频</a>
           </div>
         </div>
 
         <div class="project-card">
-          <h3>项目名称二</h3>
-          <p class="desc">一句话描述这个项目解决了什么问题、做了什么事。</p>
+          <h3>榨知机</h3>
+          <p class="desc">大学期末复习 AI 助手——期末复习抓不住重点？不知道学到什么程度才算过？榨知机承包你的焦虑，为你提供一站式及格解决方案。</p>
           <div class="tags">
-            <span class="tag">标签1</span>
-            <span class="tag">标签2</span>
+            <span class="tag">AI 应用</span>
+            <span class="tag">教育产品</span>
           </div>
           <div class="links">
-            <a href="#" target="_blank">演示视频</a>
+            <a href="https://knowledge-juicer.streamlit.app/" target="_blank">在线体验</a>
           </div>
         </div>
 
         <div class="project-card">
-          <h3>项目名称三</h3>
-          <p class="desc">一句话描述这个项目解决了什么问题、做了什么事。</p>
+          <h3>图片提示词转换小工具</h3>
+          <p class="desc">AI 听不懂人话？可能是你的提示词结构不行。</p>
           <div class="tags">
-            <span class="tag">标签1</span>
-            <span class="tag">标签2</span>
+            <span class="tag">生产力工具</span>
+            <span class="tag">提示词工程</span>
           </div>
           <div class="links">
-            <a href="#" target="_blank">演示视频</a>
-            <a href="#" target="_blank">在线体验</a>
+            <a href="https://littlegadget.vercel.app/" target="_blank">在线体验</a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ====== 尾部：思考与文章 ====== -->
+    <!-- ====== 思考与文章（三栏） ====== -->
     <section>
       <h2 class="section-title"><span class="dot"></span>一些思考</h2>
-      <div class="writing-list">
-        <a class="writing-item" href="#" target="_blank">
-          <span class="title">文章标题一：为什么信息流广告的竞价逻辑决定了平台天花板</span>
-          <span class="meta">知乎 ›</span>
-        </a>
-        <a class="writing-item" href="#" target="_blank">
-          <span class="title">文章标题二：从 DeepSeek 接入看大厂 AI 产品的 Build vs Buy 决策</span>
-          <span class="meta">公众号 ›</span>
-        </a>
-        <a class="writing-item" href="#" target="_blank">
-          <span class="title">文章标题三：占位标题，替换成你的文章</span>
-          <span class="meta">即刻 ›</span>
-        </a>
+      <div class="writing-columns">
+
+        <div class="writing-col">
+          <h3><span class="col-icon">🔍</span> 产品拆解</h3>
+          <ul>
+            <li><a href="https://www.zhihu.com/question/663312554/answer/2024504423095833080" target="_blank">
+              抖音为什么要推出抖音精选？
+              <span class="platform">知乎 ›</span>
+            </a></li>
+            <li><a href="https://www.zhihu.com/question/333249738/answer/2024503831992508518" target="_blank">
+              为什么说 Keep 不好？不好在哪里？
+              <span class="platform">知乎 ›</span>
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="writing-col">
+          <h3><span class="col-icon">💡</span> 现象思考</h3>
+          <ul>
+            <li><a href="https://www.xiaohongshu.com/discovery/item/69d32ee2000000002003ad39?source=webshare&xhsshare=pc_web&xsec_token=ABnY8HhMCfhjSjI8pIuc62BZBGS1lfdQcwjSXo0YfIPqM=&xsec_source=pc_share" target="_blank">
+              为什么越有钱有势的人，越信玄学？
+              <span class="platform">小红书 ›</span>
+            </a></li>
+            <li><a href="https://www.xiaohongshu.com/discovery/item/69d329e10000000022028f7f?source=webshare&xhsshare=pc_web&xsec_token=ABnY8HhMCfhjSjI8pIuc62BWMDS_4T2XF31j_cts3EkLE=&xsec_source=pc_share" target="_blank">
+              大公司把裁员当成 AI 应用成绩单的原因
+              <span class="platform">小红书 ›</span>
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="writing-col">
+          <h3><span class="col-icon">📖</span> 读书笔记</h3>
+          <ul>
+            <li><a href="https://mp.weixin.qq.com/s/fTQlxHGLZtJ8yj2CEHu6Xg" target="_blank">
+              《自私的基因》
+              <span class="platform">公众号 ›</span>
+            </a></li>
+            <li><a href="https://mp.weixin.qq.com/s/nAxv7Of7acc_KCdVKGzHIg" target="_blank">
+              《思考，快与慢》
+              <span class="platform">公众号 ›</span>
+            </a></li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
-    <!-- ====== 底部：联系方式 + 简历下载 ====== -->
+    <!-- ====== 底部 ====== -->
     <section class="footer-section">
       <div class="contact-links">
-        <a href="mailto:your@email.com">📮 your@email.com</a>
-        <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
-        <a href="#" target="_blank">微信：your_wechat</a>
+        <a href="mailto:leoliuziheng@163.com">📮 leoliuziheng@163.com</a>
+        <span>💬 微信：l164025057</span>
+        <a href="https://github.com/liuziheng7039" target="_blank">GitHub</a>
       </div>
-      <a class="resume-btn" href="./resume.pdf" download>
-        <span>📄</span> 下载 PDF 简历
-      </a>
-      <p class="copyright">© 2026 你的名字</p>
+      <p class="copyright">© 2026 刘镃衡</p>
     </section>
 
   </div>
